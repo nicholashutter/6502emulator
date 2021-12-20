@@ -1,29 +1,24 @@
 
 //accumulator
-let A = new Array(8); 
+var A = new Array(8); 
 //x index
 var X = new Array(8); 
 //y index 
 var Y = new Array(8); 
 // processor status
-var P = new Array(8); 
+var SR = new Array(8); 
 //stack pointer
 var S = new Array(8); 
 //program counter
 var PC = new Array(8);
+ 
+//create virtual ram array to hold program to be executed
+var virtualRam = new Array(128)
+virtualRam.fill(undefined); 
+
+
 
 initRegisters();
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -42,7 +37,7 @@ function initRegisters()
 tempArray[0] = A;
 tempArray[1] = X;
 tempArray[2] = Y;
-tempArray[3] = P;
+tempArray[3] = SR;
 tempArray[4] = S; 
 tempArray[5] = PC;  
 for (let i = 0; i< 6; i ++)
@@ -56,5 +51,9 @@ for (let i = 0; i< 6; i ++)
 
 }
 
-
-
+function loadProgram(qualifiedPath)
+{
+    //read from file 
+    //load assembly program from file to ram 
+    //
+}
