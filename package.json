@@ -1,0 +1,11 @@
+{
+  "name": "6502emulator",
+  "version": "1.0.0",
+  "description": "javascript 6502 emulator implementation",
+  "main": "Main.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "nicholas hutter",
+  "license": "ISC"
+}
