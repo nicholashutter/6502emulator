@@ -14,11 +14,11 @@ var PC = new Array(8);
  
 //create virtual ram array to hold program to be executed
 var virtualRam = new Array(128)
-virtualRam.fill(undefined); 
 
 
 
 initRegisters();
+loadProgram();
 
 
 
@@ -55,5 +55,9 @@ function loadProgram(qualifiedPath)
 {
     //read from file 
     //load assembly program from file to ram 
-    //
+    let fs =require("fs");
+    let text = fs.readFileSync("./asmProgram.txt").toString('utf-8');
+    let textByLine = text.split("/n"); 
+
+    virtualRam = textByLine;
 }
