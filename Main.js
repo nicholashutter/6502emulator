@@ -13,7 +13,7 @@ var S = new Array(8);
 var PC = new Array(8);
  
 //create virtual ram array to hold program to be executed
-var virtualRam = new Array(128)
+var virtualRam = new Array();
 
 
 
@@ -23,11 +23,24 @@ loadProgram();
 
 
 
-
-
-
-
-
+//actual operation of assembly code 
+function execute()
+{
+    //fetch 
+        /*grab first line of code from memory
+    //decode 
+    /*
+        split lines read from memory 
+        between operation and memory address
+        return operation and memory address 
+    */
+    //execute 
+    /*
+        look up operation
+        perform operation at memory address
+        increment PC 
+    */
+}
 
 
 //fill all registers and limit their size
@@ -50,14 +63,14 @@ for (let i = 0; i< 6; i ++)
     }
 
 }
-
+//read from file 
+//load assembly program from file to ram 
 function loadProgram(qualifiedPath)
 {
-    //read from file 
-    //load assembly program from file to ram 
     let fs =require("fs");
     let text = fs.readFileSync("./asmProgram.txt").toString('utf-8');
     let textByLine = text.split("/n"); 
 
     virtualRam = textByLine;
+    virtualRam.push("stop");
 }
