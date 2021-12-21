@@ -1,25 +1,14 @@
 
-//accumulator
-var A = new Array(8); 
-//x index
-var X = new Array(8); 
-//y index 
-var Y = new Array(8); 
-// processor status
-var SR = new Array(8); 
-//stack pointer
-var S = new Array(8); 
-//program counter
-var PC = new Array(8);
+
  
 //create virtual ram array to hold program to be executed
-var virtualRam = new Array();
+//fix size to 64k 
+var virtualRam = new Array(65535);
+virtualRam.fill(undefined);
+Object.seal(virtualRam);
 
-
-
-initRegisters();
+reset();
 loadProgram();
-
 
 
 
@@ -32,7 +21,8 @@ function execute()
     /*
         split lines read from memory 
         between operation and memory address
-        return operation and memory address 
+        Determine memory addressing mode 
+        return operation, memory addressing mode, and memory address 
     */
     //execute 
     /*
@@ -42,6 +32,24 @@ function execute()
     */
 }
 
+function reset()
+{
+    //6502 initialize all registers to default values 
+    //accumulator
+var A = new Array(8); 
+//x index
+var X = new Array(8); 
+//y index 
+var Y = new Array(8); 
+// processor status
+var SR = new Array(8); 
+//stack pointer
+var S = new Array(8); 
+//program counter
+var PC = new Array(8);
+
+initRegisters();
+}
 
 //fill all registers and limit their size
 function initRegisters()
@@ -61,7 +69,7 @@ for (let i = 0; i< 6; i ++)
             Object.seal(tempArray[i]);
         }
     }
-
+SR[]
 }
 //read from file 
 //load assembly program from file to ram 
