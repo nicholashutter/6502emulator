@@ -3,7 +3,7 @@
  
 //create virtual ram array to hold program to be executed
 //fix size to 64k 
-var virtualRam = new Array(65535);
+var virtualRam = new Array(0xFFFF);
 virtualRam.fill(undefined);
 Object.seal(virtualRam);
 
@@ -15,8 +15,7 @@ loadProgram();
 //actual operation of assembly code 
 function execute()
 {
-    //fetch 
-        /*grab first line of code from memory
+   fetch();
     //decode 
     /*
         split lines read from memory 
@@ -36,19 +35,20 @@ function reset()
 {
     //6502 initialize all registers to default values 
     //accumulator
-var A = new Array(8); 
+var A = new Array(0xFF); 
 //x index
-var X = new Array(8); 
+var X = new Array(0xFF); 
 //y index 
-var Y = new Array(8); 
+var Y = new Array(0xFF); 
 // processor status
-var SR = new Array(8); 
+var SR = new Array(0xFF); 
 //stack pointer
-var S = new Array(8); 
+var S = new Array(0xFF); 
 //program counter
-var PC = new Array(8);
+var PC = new Array(0xFF);
 
 initRegisters();
+SR[]
 }
 
 //fill all registers and limit their size
@@ -69,7 +69,6 @@ for (let i = 0; i< 6; i ++)
             Object.seal(tempArray[i]);
         }
     }
-SR[]
 }
 //read from file 
 //load assembly program from file to ram 
@@ -81,4 +80,10 @@ function loadProgram(qualifiedPath)
 
     virtualRam = textByLine;
     virtualRam.push("stop");
+}
+
+function fetch()
+{
+    //grab first line of code from RAM 
+
 }
