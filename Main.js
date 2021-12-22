@@ -31,21 +31,31 @@ function execute()
     */
 }
 
+function initClock()
+{
+    /*
+    Create clock for cpu to properly implement addressing modes
+    and their respective cycles
+
+
+    */
+}
+
 function reset()
 {
     //6502 initialize all registers to default values 
     //accumulator
-var A = new Array(0xFF); 
+var A;
 //x index
-var X = new Array(0xFF); 
+var X; 
 //y index 
-var Y = new Array(0xFF); 
+var Y;
 // processor status
-var SR = new Array(0xFF); 
+var SR;
 //stack pointer
-var S = new Array(0xFF); 
+var S;
 //program counter
-var PC = new Array(0xFF);
+var PC;
 
 initRegisters();
 SR[]
@@ -63,11 +73,7 @@ tempArray[4] = S;
 tempArray[5] = PC;  
 for (let i = 0; i< 6; i ++)
     {
-        if(Object.seal)
-        {
-            tempArray[i].fill(undefined);
-            Object.seal(tempArray[i]);
-        }
+        clamp(tempArray[i],0x0,0xFF);
     }
 }
 //read from file 
@@ -86,4 +92,8 @@ function fetch()
 {
     //grab first line of code from RAM 
 
+}
+
+function clamp(value, min, max) {
+    return Math.min(Math.max(value, min), max);
 }
