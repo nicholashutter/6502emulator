@@ -1,4 +1,4 @@
-
+import Bus from './Bus.js';
 //create virtual ram array to hold program to be executed
 var ram = new Array(0xFFFF);
 //hard coded assembly code for initial test case
@@ -18,15 +18,15 @@ var A;
 var X; 
 var Y; 
 var outofBounds = false; 
-var bus; 
 
-bus = ram[0x80E8];
+var bus = new Bus();
+bus.send(ram[0x80E8]);
 
 fetch();
 
 function fetch()
 {
-    let Z = bus; 
+    let Z = bus.recieve(); 
     decode(Z);
 }
 

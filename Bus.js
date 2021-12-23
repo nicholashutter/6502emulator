@@ -1,13 +1,11 @@
-class Bus
+export default class Bus
 {
     #bus = 0;
-
-
-    get getBus()
+    recieve()
     {
     return this.#bus;
     }
-    set setBus(value)
+    send(value)
     {
         this.#bus = value; 
     }
