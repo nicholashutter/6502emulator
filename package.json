@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "javascript 6502 emulator implementation",
   "main": "Main.js",
+  "type": "module",
   "scripts": {
     "test": "test"
   },
