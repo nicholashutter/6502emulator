@@ -10,35 +10,266 @@ ram[0x80FA] = "STA $0402"
 
 
 
-
+//init 6502 registers
 var PC; 
 var S; 
 var P; 
 var A; 
 var X; 
 var Y; 
+//flag to help parse input
 var outofBounds = false; 
 
 var bus = new Bus();
+//cpu call for instruction from ram
 bus.send(ram[0x80E8]);
 
 fetch();
 
+
+//function to grab instruction from the bus
 function fetch()
 {
     let Z = bus.recieve(); 
     decode(Z);
 }
 
+//function to break operation into code and memory address 
 function decode(Z)
 {
     const split =Z.toString().split(" ");
-    console.log(split[0]);
-    console.log(split[1]);
+    execute(split);
 }
 
-function execute()
+//function to perform operation at memory address
+function execute(stdarray)
 {
+    let opCode = stdarray[0];
+    let address = stdarray[1];
 
+    switch (opCode)
+    {
+        case'ADC':
+        console.log("ADC");
+        break;
+
+        case'AND':
+        console.log("AND");
+        break;
+
+        case'ASL':
+        console.log("ASL");
+        break;
+
+        case'BCC':
+        console.log("BCC");
+        break;
+
+        case'BEQ':
+        console.log("BEQ");
+        break;
+
+        case'BMI':
+        console.log("BNE");
+        break;
+
+        case'BNE':
+        console.log("BNE");
+        break;
+
+        case'BPL':
+        console.log("BPL");
+        break;
+
+        case'BRK':
+        console.log("BRK");
+        break;
+
+        case'BVC':
+        console.log("BVC");
+        break;
+
+        case'BVS':
+        console.log("BVS");
+        break;
+
+        case'CLC':
+        console.log("CLC");
+        break;
+
+        case'CLD':
+        console.log("CLD");
+        break;
+
+        case'CLI':
+        console.log("CLI");
+        break;
+
+        case'CLV':
+        console.log("CLV");
+        break;
+
+        case'CMP':
+        console.log("CMP");
+        break;
+
+        case'CPX':
+        console.log("CPX");
+        break;
+
+        case'CPY':
+        console.log("CPY");
+        break;
+
+        case'DEC':
+        console.log("DEC");
+        break;
+
+        case'DEX':
+        console.log("DEX");
+        break;
+
+        case'DEY':
+        console.log("DEY");
+        break;
+
+        case'EOR':
+        console.log("EOR");
+        break;
+
+        case'INC':
+        console.log("INC");
+        break;
+
+        case'INX':
+        console.log("INX");
+        break;
+
+        case'INY':
+        console.log("INY");
+        break;
+
+        case'INX':
+        console.log("INX");
+        break;
+
+        case'JMP':
+        console.log("JMP");
+        break;
+
+        case'JSR':
+        console.log("JSR");
+        break;
+
+        case'LDA':
+        console.log("LDA");
+        break;
+
+        case'LDX':
+        console.log("LDX");
+        break;
+
+        case'LDY':
+        console.log("LDY");
+        break;
+
+        case'LSR':
+        console.log("LSR");
+        break;
+
+        case'NOP':
+        console.log("NOP");
+        break;
+
+        case'ORA':
+        console.log("ORA");
+        break;
+
+        case'PHA':
+        console.log("PHA");
+        break;
+
+        case'PHP':
+        console.log("PHP");
+        break;
+
+        case'PLA':
+        console.log("PLA");
+        break;
+
+        case'PLP':
+        console.log("PLP");
+        break;
+
+        case'ROL':
+        console.log("ROL");
+        break;
+
+        case'ROR':
+        console.log("ROR");
+        break;
+
+        case'RTI':
+        console.log("RIT");
+        break;
+
+        case'RTS':
+        console.log("RTS");
+        break;
+
+        case'SBC':
+        console.log("SBC");
+        break;
+
+        case'SEC':
+        console.log("SEC");
+        break;
+
+        case'SED':
+        console.log("SED");
+        break;
+
+        case'SEI':
+        console.log("SEI");
+        break;
+
+        case'STA':
+        console.log("STA");
+        break;
+
+        case'STX':
+        console.log("STX");
+        break;
+
+        case'STY':
+        console.log("STY");
+        break;
+
+        case'TAX':
+        console.log("TAX");
+        break;
+
+        case'TAY':
+        console.log("TAY");
+        break;
+
+        case'TSX':
+        console.log("TSX");
+        break;
+
+        case'TXA':
+        console.log("TXA");
+        break;
+
+        case'TXS':
+        console.log("TXS");
+        break;
+
+        case'TYA':
+        console.log("TYA");
+        break;
+    }
 }
+
+
 
