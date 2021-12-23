@@ -58,7 +58,6 @@ var S;
 var PC;
 
 initRegisters();
-SR[]
 }
 
 //fill all registers and limit their size
@@ -91,6 +90,8 @@ function loadProgram(qualifiedPath)
 function fetch()
 {
     //grab first line of code from RAM 
+    //string.split 
+    console.log(virtualRam);
 
 }
 
