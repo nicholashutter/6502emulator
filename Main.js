@@ -11,14 +11,66 @@ ram[0x80FA] = "STA $0402"
 
 
 //init 6502 registers
-var PC; 
-var S; 
-var P; 
-var A; 
-var X; 
-var Y; 
-//flag to help parse input
-var outofBounds = false; 
+class registers
+{
+    #PC; 
+    #S; 
+    #P; 
+    #A; 
+    #X; 
+    #Y; 
+    getPC()
+    {
+        return this.#PC;
+    }
+    setPC(value)
+    {
+        if (value > 0 && value < 257) {this.#PC = value;}
+    }
+    getS()
+    {
+        return this.#S;
+    }
+    setS(value)
+    {
+        if (value > 0 && value < 257) {this.#S = value;}
+    }    
+    getP()
+    {
+        return this.#P;
+    }
+    setP(value)
+    {
+        if (value > 0 && value < 257) {this.#P = value;}
+    }    
+    getA()
+    {
+        return this.#A;
+    }
+    setA(value)
+    {
+        if (value > 0 && value < 257) {this.#A = value;}
+    }    
+    getX()
+    {
+        return this.#X;
+    }
+    setX(value)
+    {
+        if (value > 0 && value < 257) {this.#X = value;}
+    }    
+    getY()
+    {
+        return this.#Y;
+    }
+    setY(value)
+    {
+        if (value > 0 && value < 257) {this.#Y = value;}
+    }
+}
+
+//init registers, wrapped to parse input
+var r = new registers;
 
 var bus = new Bus();
 //cpu call for instruction from ram
@@ -26,6 +78,8 @@ bus.send(ram[0x80E8]);
 
 fetch();
 
+r.setPC(5);
+console.log(r.getPC());
 
 //function to grab instruction from the bus
 function fetch()
@@ -46,7 +100,7 @@ function execute(stdarray)
 {
     let opCode = stdarray[0];
     let address = stdarray[1];
-
+//need to implement assembly alias
     switch (opCode)
     {
         case'ADC':
@@ -269,6 +323,7 @@ function execute(stdarray)
         console.log("TYA");
         break;
     }
+
 }
 
 
