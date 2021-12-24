@@ -6,11 +6,7 @@ ram[0x80E8] = "LDA #01"
 ram[0x80E9] = "ADC #02"     
 ram[0x80FA] = "STA $0402"    
 
-
-
-
-
-//init 6502 registers
+// 6502 registers
 class registers
 {
     #PC; 
@@ -78,8 +74,8 @@ bus.send(ram[0x80E8]);
 
 fetch();
 
-r.setPC(5);
-console.log(r.getPC());
+r.setA(5);
+console.log(r.getA());
 
 //function to grab instruction from the bus
 function fetch()
